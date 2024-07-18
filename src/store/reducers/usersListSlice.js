@@ -12,7 +12,7 @@ export const usersListSlice = createSliceWithThunks({
         usersItems: [],
     },
     selectors: {
-        selectUsersList: (state) => state,
+        selectUsersList: (state) => state.usersItems,
     },
 
     reducers: (create) => ({
@@ -24,7 +24,8 @@ export const usersListSlice = createSliceWithThunks({
                         throw new Error(`Response status: ${response.status}`);
                     }
                     const json = await response.json();
-                    console.log(json);
+                    return json.users;
+                    // console.log(json);
                 } catch (error) {
                     console.error(error.message);
                 }
@@ -44,15 +45,6 @@ export const usersListSlice = createSliceWithThunks({
                 },
             }
         ),
-        seasonFilter: create.reducer((state, action) => {
-            state.tireItems = state.tireItems.filter((item) => {
-                if (action.payload.season === "") {
-                    return true;
-                } else {
-                    return item.season === action.payload.season;
-                }
-            });
-        }),
     }),
 });
 
