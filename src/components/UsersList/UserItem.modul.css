@@ -1,11 +1,13 @@
 .userWrapper {
     border-radius: 5px;
     border: 1px solid black;
-    margin: 10px;
+    gap: 10px;
     display: grid;
     grid-auto-flow: column;
+    margin-bottom: 10px;
 }
 
 .userDataItem {
-    /* background-color: aquamarine; */
+    background-color: aquamarine;
+    gap: 3px;
 }
