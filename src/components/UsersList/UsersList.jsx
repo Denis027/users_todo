@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
     fetchUsers,
     selectUsersList,
-} from "../../store/reducers/usersListSlice";
+} from "../../app/store/reducers/usersListSlice";
 import { useEffect } from "react";
 // import UserItem from "./UserItem";
 import "./UsersList.modul.css";
@@ -14,12 +14,13 @@ import {
 
 const UsersList = () => {
     const dispatch = useDispatch();
+
     useEffect(() => {
         dispatch(fetchUsers());
         // eslint-disable-next-line
     }, []);
-    const usersList = useSelector(selectUsersList);
 
+    const usersList = useSelector(selectUsersList);
     const data = usersList;
 
     // const usersItems = usersList.map((item) => (
