@@ -1,7 +1,7 @@
 import "./App.css";
 import { NavLink, Routes, Route } from "react-router-dom";
 import UsersList from "./components/UsersList/UsersList";
-import ToDoList from "./components/TodoList/ToDo";
+import ToDoList from "./components/TodoList/ToDoList";
 
 function App() {
     return (

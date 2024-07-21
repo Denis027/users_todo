@@ -1,6 +1,13 @@
-.usersListWrapper {
+.toDoWrapper {
+    background-color: aqua;
+    text-decoration: none;
     width: 100%;
     max-width: 1200px;
     margin: 10px;
+    display: grid;
+}
+
+.toDoWrapper li {
+    text-decoration: none;
     display: grid;
 }

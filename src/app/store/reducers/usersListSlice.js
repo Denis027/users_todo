@@ -25,7 +25,6 @@ export const usersListSlice = createSliceWithThunks({
                     }
                     const json = await response.json();
                     return json.users;
-                    // console.log(json);
                 } catch (error) {
                     console.error(error.message);
                 }
