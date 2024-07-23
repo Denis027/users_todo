@@ -1,13 +1,29 @@
-.toDoWrapper {
-    background-color: aqua;
-    text-decoration: none;
-    width: 100%;
-    max-width: 1200px;
-    margin: 10px;
+.toDoItemWrapper {
+    background-color: #eae7dc;
+    color: black;
+    border: solid black 1px;
+    border-radius: 10px;
+    padding: 10px;
+    list-style-type: none;
+    margin-bottom: 10px;
     display: grid;
+    transition: 2s all;
 }
 
-.toDoWrapper li {
-    text-decoration: none;
+.toDoItem {
+    padding: 10px;
+    margin-bottom: 10px;
+    list-style-type: none;
     display: grid;
+    min-width: 250px;
+    grid-template-columns: 1fr 30px;
+}
+
+.toDoButtons {
+    width: 30px;
+    display: grid;
+    justify-items: end;
+    align-items: start;
+    align-content: space-between;
+    gap: 5px;
 }

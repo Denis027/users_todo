@@ -5,20 +5,20 @@ import ToDoList from "./components/TodoList/ToDoList";
 
 function App() {
     return (
-        <div className="App">
-            <div>
+        <div className="AppWrapper">
+            <div className="navBar">
                 <nav>
-                    <ul>
-                        <li>
-                            <NavLink to="/users">Users</NavLink>
+                    <ul className="navBarList">
+                        <li className="navBarItem">
+                            <NavLink to="/users">Users List</NavLink>
                         </li>
-                        <li>
-                            <NavLink to="/todo">ToDo</NavLink>
+                        <li className="navBarItem">
+                            <NavLink to="/todo">ToDo List</NavLink>
                         </li>
                     </ul>
                 </nav>
             </div>
-            <div>
+            <div className="AppContentWrapper">
                 <Routes>
                     <Route path="/users" element={<UsersList />} />
                     <Route path="/todo" element={<ToDoList />} />

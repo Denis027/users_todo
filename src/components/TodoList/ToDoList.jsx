@@ -10,7 +10,6 @@ const ToDoList = () => {
         JSON.parse(localStorage.getItem("ToDoList")) || []
     );
     useEffect(() => {
-        console.log(toDoList);
         localStorage.setItem("ToDoList", JSON.stringify(toDoList));
     }, [toDoList]);
 
@@ -23,7 +22,7 @@ const ToDoList = () => {
             title,
             description,
             date,
-            checked: false,
+            completed: false,
         };
         setToDoList((old) => [...old, newItem]);
     };
@@ -59,7 +58,7 @@ const ToDoList = () => {
     ));
 
     return (
-        <div className="toDo">
+        <div className="toDoListWrapper">
             <h1>ToDo List</h1>
             <div>
                 <AddToDoForm setNewToDoItem={setNewToDoItem} />

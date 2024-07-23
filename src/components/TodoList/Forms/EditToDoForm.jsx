@@ -1,5 +1,5 @@
 import { React } from "react";
-import "./AddToDoForm.modul.css";
+import "./ToDoForm.modul.css";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
@@ -23,9 +23,9 @@ const EditToDoForm = (props) => {
     });
 
     return (
-        <div className="toDoForm">
-            <form onSubmit={formik.handleSubmit}>
-                <div>
+        <div className="toDoFormWrapper">
+            <form className="toDoForm" onSubmit={formik.handleSubmit}>
+                <div className="toDoFormTitle">
                     <label htmlFor="title">Title: </label>
                     <input
                         id="title"
@@ -36,7 +36,13 @@ const EditToDoForm = (props) => {
                         value={formik.values.title}
                     />
                     {formik.submitCount > 0 && formik.errors.title && (
-                        <p>{formik.errors.title}</p>
+                        <p
+                            style={{
+                                color: "red",
+                            }}
+                        >
+                            {formik.errors.title}
+                        </p>
                     )}
                 </div>
                 <div>
@@ -49,9 +55,6 @@ const EditToDoForm = (props) => {
                         onBlur={formik.handleBlur}
                         value={formik.values.description}
                     />
-                    {formik.submitCount > 0 && formik.errors.description && (
-                        <p>{formik.errors.description}</p>
-                    )}
                 </div>
                 <div>
                     <label htmlFor="date">Date: </label>
@@ -64,7 +67,13 @@ const EditToDoForm = (props) => {
                         value={formik.values.date}
                     />
                     {formik.submitCount > 0 && formik.errors.date && (
-                        <p>{formik.errors.date}</p>
+                        <p
+                            style={{
+                                color: "red",
+                            }}
+                        >
+                            {formik.errors.date}
+                        </p>
                     )}
                 </div>
                 <button type="submit">Save</button>

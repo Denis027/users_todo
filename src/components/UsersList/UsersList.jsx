@@ -1,89 +1,75 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
     fetchUsers,
+    filterUsers,
     selectUsersList,
+    sortUsersColumn,
 } from "../../app/store/reducers/usersListSlice";
-import { useEffect } from "react";
-// import UserItem from "./UserItem";
+import { useEffect, useState } from "react";
+import UserItem from "./UserItem";
 import "./UsersList.modul.css";
-import { useMemo } from "react";
-import {
-    MaterialReactTable,
-    useMaterialReactTable,
-} from "material-react-table";
 
 const UsersList = () => {
     const dispatch = useDispatch();
+    const usersList = useSelector(selectUsersList);
+    const [columnSearch, setColumnSearch] = useState("");
+    const [searchQuery, setSearchQuery] = useState("");
 
     useEffect(() => {
         dispatch(fetchUsers());
-        // eslint-disable-next-line
-    }, []);
+    }, [dispatch, columnSearch, searchQuery]);
 
-    const usersList = useSelector(selectUsersList);
-    const data = usersList;
+    const search = () => {
+        if (columnSearch !== "" && searchQuery !== "") {
+            dispatch(filterUsers({ columnSearch, searchQuery }));
+        }
+    };
 
-    // const usersItems = usersList.map((item) => (
-    //     <UserItem key={item.id} item={item} />
-    // ));
-    // console.log(usersList);
-
-    const columns = useMemo(
-        () => [
-            {
-                accessorKey: "firstName", //access nested data with dot notation
-                header: "Имя",
-                size: 50,
-            },
-            {
-                accessorKey: "maidenName", //access nested data with dot notation
-                header: "Фамилия",
-                size: 50,
-            },
-            {
-                accessorKey: "lastName", //access nested data with dot notation
-                header: "Отчество",
-                size: 50,
-            },
-            {
-                accessorKey: "age", //access nested data with dot notation
-                header: "Возраст",
-                size: 50,
-            },
-            {
-                accessorKey: "gender", //access nested data with dot notation
-                header: "Пол",
-                size: 50,
-            },
-            {
-                accessorKey: "phone", //access nested data with dot notation
-                header: "Номер телефона",
-                size: 50,
-            },
-            {
-                accessorKey: "address.city", //access nested data with dot notation
-                header: "Город",
-                size: 50,
-            },
-            {
-                accessorKey: "address.address", //access nested data with dot notation
-                header: "Адрес",
-                size: 50,
-            },
-        ],
-        []
-    );
-
-    const table = useMaterialReactTable({
-        columns,
-        data, //data must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
-    });
+    const sortColumn = (columnId) => {
+        dispatch(sortUsersColumn(columnId));
+    };
 
     return (
-        <div className="usersList">
+        <div className="usersListWrapper">
             <h1>Users List</h1>
-            {/* <div className="usersListWrapper">{usersItems}</div> */}
-            <MaterialReactTable table={table} />
+            <div className="userListSearch">
+                Поиск по:
+                <select
+                    className={"select"}
+                    value={columnSearch}
+                    onChange={(e) => {
+                        setColumnSearch(e.target.value);
+                    }}
+                >
+                    <option value={""}>select column</option>
+                    <option value={"firstName"}>firstName</option>
+                    <option value={"maidenName"}>maidenName</option>
+                    <option value={"lastName"}>lastName</option>
+                    <option value={"age"}>age</option>
+                    <option value={"gender"}>gender</option>
+                    <option value={"phone"}>phone</option>
+                    <option value={"address.city"}>city</option>
+                    <option value={"address.address"}>address</option>
+                </select>
+                <input
+                    value={searchQuery}
+                    onChange={(e) => {
+                        setSearchQuery(e.target.value);
+                    }}
+                />
+                <button onClick={search}>Search</button>
+                <button
+                    onClick={() => {
+                        setColumnSearch("");
+                        setSearchQuery("");
+                    }}
+                >
+                    Clear
+                </button>
+            </div>
+            <div className="usersListTabler">
+                <UserItem sortColumn={sortColumn} usersList={usersList} />
+            </div>
         </div>
     );
 };

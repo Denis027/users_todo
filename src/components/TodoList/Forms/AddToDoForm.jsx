@@ -1,5 +1,5 @@
 import { React } from "react";
-import "./AddToDoForm.modul.css";
+import "./ToDoForm.modul.css";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
@@ -23,9 +23,9 @@ const AddToDoForm = (props) => {
     });
 
     return (
-        <div className="toDoForm">
-            <form onSubmit={formik.handleSubmit}>
-                <div>
+        <div className="toDoFormWrapper">
+            <form className="toDoForm" onSubmit={formik.handleSubmit}>
+                <div className="toDoFormTitle">
                     <label htmlFor="title">Title: </label>
                     <input
                         id="title"

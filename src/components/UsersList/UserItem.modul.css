@@ -1,13 +1,24 @@
 .userWrapper {
-    border-radius: 5px;
     border: 1px solid black;
-    gap: 10px;
     display: grid;
-    grid-auto-flow: column;
-    margin-bottom: 10px;
+    border-radius: 15px;
 }
 
-.userDataItem {
-    background-color: aquamarine;
-    gap: 3px;
+table {
+    width: 100vw;
+    max-width: 1200px;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+td {
+    padding: 5px;
+    border: solid black 1px;
+    min-width: 50px;
+    border-radius: 15px;
+}
+
+.tableHead td {
+    resize: horizontal;
+    overflow: hidden;
 }

@@ -1,6 +1,6 @@
-.usersListWrapper {
-    width: 100%;
-    max-width: 1200px;
-    margin: 10px;
+.toDoListWrapper {
+    width: 1200px;
+    padding: 10px;
     display: grid;
+    justify-items: start;
 }
