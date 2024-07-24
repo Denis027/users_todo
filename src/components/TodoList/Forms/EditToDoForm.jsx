@@ -27,7 +27,8 @@ const EditToDoForm = (props) => {
             <form className="toDoForm" onSubmit={formik.handleSubmit}>
                 <div className="toDoFormTitle">
                     <label htmlFor="title">Title: </label>
-                    <input
+                    <textarea
+                        className="titleArea"
                         id="title"
                         name="title"
                         type="text"
@@ -47,8 +48,8 @@ const EditToDoForm = (props) => {
                 </div>
                 <div>
                     <label htmlFor="description">Description: </label>
-                    <input
-                        id="description"
+                    <textarea
+                        className="descriptionArea"
                         name="description"
                         type="text"
                         onChange={formik.handleChange}
@@ -59,6 +60,7 @@ const EditToDoForm = (props) => {
                 <div>
                     <label htmlFor="date">Date: </label>
                     <input
+                        className="dateInput"
                         id="date"
                         name="date"
                         type="date"

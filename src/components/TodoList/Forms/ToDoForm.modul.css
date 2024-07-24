@@ -12,13 +12,27 @@
     padding: 10px;
     gap: 10px;
 }
-.toDoForm input {
+.titleArea {
+    border-radius: 10px;
+    height: 20px;
+    width: 200px;
+}
+
+.descriptionArea {
     border-radius: 10px;
     min-width: 100%;
+    height: 80px;
+}
+
+.dateInput {
+    border-radius: 10px;
     height: 20px;
+    width: 200px;
 }
 
 .toDoForm button {
     border-radius: 10px;
+    height: 20px;
+    width: 200px;
     gap: 10px;
 }

@@ -4,3 +4,11 @@
     display: grid;
     justify-items: start;
 }
+
+.filter {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.selectFilter {
+}

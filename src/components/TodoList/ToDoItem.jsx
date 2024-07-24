@@ -28,11 +28,10 @@ const ToDoItem = (props) => {
                         }
                         className="toDoData"
                     >
+                        <div className="toDoDate">Date: {props.item.date}</div>
                         <div className="toDoTitle">
-                            {props.item.date}
                             <h2>{props.item.title}</h2>
                         </div>
-                        <div className="toDoDate"></div>
                         <div className="toDoDescription">
                             {props.item.description}
                         </div>
@@ -41,8 +40,9 @@ const ToDoItem = (props) => {
                         <input
                             type="checkbox"
                             checked={props.item.checked}
+                            onChange={() => {}}
                             onClick={() => {
-                                props.handleCheck(props.item.id);
+                                props.checkToDoItem(props.item.id);
                             }}
                         />
                         <button
@@ -56,7 +56,7 @@ const ToDoItem = (props) => {
                             role="button"
                             tabIndex="0"
                             onClick={() => {
-                                props.handleDelete(props.item.id);
+                                props.deleteToDoItem(props.item.id);
                             }}
                         />
                     </div>
